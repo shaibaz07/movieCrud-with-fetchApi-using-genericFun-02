@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix movie crud</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+</head>
+
+<body>
+    <div class="container pt-5 mb-5">
+        <div class="row">
+            <div class="col-6">
+                <a href="index.html" class="logo">
+                    <img src="./assets/images/logo.svg" alt="Logo" title="Logo">
+                </a>
+            </div>
+            <div class="col-6 text-right align-self-center">
+                <button id="showMovieBtn" class="btn btn-sm net-pri-btn">Add Movie</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" id="movieContainer">
+            <!-- <div class="col-md-3">
+                <div class="card movieCard">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="m-0">The Paradise</h4>
+
+                            </div>
+                            <div class="col-2">
+                                <h5 class="m-0">
+                                    <span class="badge badge-danger">2.5</span>
+
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-0">
+                        <figure class="m-0">
+                            <img src="./assets/images/ET00436621.avif" alt="The Paradise" title="The Paradise">
+
+                            <figcaption>
+                                <h3 class="mb-4">The Paradise</h3>
+                                <div class="text-secondary">
+                                <h5 >thriller</h5>
+                                    <h6>Release Date : 12-12-2026</h6>
+                                </div>
+                                <p>Jadal leads a marginalized tribe in an enduring battle against systemic injustice and
+                                    discrimination.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-sm net-sec-btn">Edit</button>
+                        <button class="btn btn-sm net-pri-btn">Remove</button>
+
+                    </div>
+                </div>
+
+
+            </div> -->
+
+        </div>
+
+
+        <div class="movieModal" id="movieModal">
+            <form id="movieForm">
+
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3 class="m-0">Add Movie</h3>
+                        <i role="button" class="closeMovieModal fa-solid fa-xmark fa-2x text-danger"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="movieName">Movie Name</label>
+                            <input type="text" class="form-control" id="movieName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="movieImg">Movie Image</label>
+                            <input type="text" class="form-control" id="movieImg">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieDescription">Movie Description</label>
+                            <textarea type="text" id="movieDescription" rows="4" class="form-control"></textarea>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-4 mb-3 form-grpop">
+                                <label for="movieRating" class="form-label">Movie Rating:</label>
+                                <select class="form-select form-control" id="movieRating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-4 mb-3 form-grpop">
+                                <label for="movieGener" class="orm-label">Movie Genre:</label>
+                                <select class="form-select form-control" id="movieGener">
+                                    <option value="">Select Genre</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Crime/Action">Crime/Action</option>
+                                    <option value="sci/fic">sci/fic</option>
+
+                                    
+
+                                </select>
+                            </div>
+
+
+                            <div class="col-4 mb-3 form-group">
+                                <label for="movieReleaseDate" class="form-label">Release Date:</label>
+                                <input type="date" class="form-control" id="movieReleaseDate" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button type="submit" class="btn btn-sm net-sec-btn" id="addMovieBtn">Add Movie</button>
+                        <button type="button" class="btn btn-sm net-sec-btn d-none" id="updateMovieBtn">Update
+                            Movie</button>
+
+                        <button type="button" class="closeMovieModal btn btn-sm net-pri-btn">Close</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="backDrop closeMovieModal" id="backDrop"></div>
+    </div>
+
+
+    <div id="spinner" class="d-none">
+        <div class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./assets/js/app.js"></script>
+
+</body>
+
+</html>
