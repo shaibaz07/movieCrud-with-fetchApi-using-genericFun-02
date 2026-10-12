@@ -33,9 +33,16 @@ function ObjtoArr(obj) {
 }
 
 function onModalToggle() {
+    const changeTxt = document.getElementById('changeTxt')  
     movieModal.classList.toggle('active')
     backDrop.classList.toggle('active')
+    changeTxt.innerHTML ='Add Movie'
+
     movieForm.reset()
+    updateMovieBtn.classList.add('d-none')
+    addMovieBtn.classList.remove('d-none')
+
+
 }
 
 function setRating(rating) {
@@ -253,7 +260,10 @@ function onMovieEdit(ele) {
     let EditId = ele.closest('.col-md-3').id;
     state.editId = EditId
 
+    const changeTxt = document.getElementById('changeTxt')  
     onModalToggle()
+    changeTxt.innerHTML = 'Update Movie'
+
     let EditObj = state.moviesArr.find(m => m.id === EditId)
 
     movieName.value = EditObj.movieName;
@@ -403,20 +413,6 @@ function onMovieRemove(ele) {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
